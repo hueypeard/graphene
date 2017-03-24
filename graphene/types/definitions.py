@@ -13,6 +13,11 @@ class GrapheneGraphQLType(object):
         self.graphene_type = kwargs.pop('graphene_type')
         super(GrapheneGraphQLType, self).__init__(*args, **kwargs)
 
+    def __eq__(self, other):
+        if isinstance(other, GrapheneGraphQLType):
+            return self.graphene_type == other.graphene_type
+        
+        return NotImplemented
 
 class GrapheneInterfaceType(GrapheneGraphQLType, GraphQLInterfaceType):
     pass
